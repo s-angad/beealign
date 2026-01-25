@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense, useMemo } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, PerspectiveCamera } from '@react-three/drei';
 import * as THREE from 'three';
@@ -8,64 +8,75 @@ import Button from './Button';
 import HoneycombClusters from './HoneycombClusters';
 
 const HeroBeeSection = () => {
+  const dpr = useMemo(() => {
+    if (typeof window === 'undefined') return [1, 1.2];
+    // Cap DPR for performance and browser compatibility.
+    const maxDpr = 1.2;
+    const current = window.devicePixelRatio || 1;
+    return [1, Math.min(current, maxDpr)];
+  }, []);
+
   return (
     <section className="relative h-screen w-full overflow-visible canvas-chamber">
       {/* Three.js Canvas Layer (z-10) */}
-      <div className="absolute inset-0 z-10 overflow-visible pointer-events-none glass-panel honeycomb-stage">
+      <div className="absolute inset-0 z-10 overflow-visible glass-panel honeycomb-stage">
         {/* Honeycomb clusters (canvas-only): visible over canvas, under hero text */}
-        <div className="absolute inset-0 z-[30]" aria-hidden="true">
+        <div className="absolute inset-0 z-[30] pointer-events-none" aria-hidden="true">
           <HoneycombClusters />
         </div>
 
         <div className="absolute inset-0 z-10">
-        <Canvas 
-          shadows
-          gl={{ antialias: true, alpha: true, powerPreference: 'high-performance', toneMapping: THREE.ACESFilmicToneMapping }}
-          dpr={[1, 1.25]}
-          camera={{ position: [0, 1.2, 5], fov: 50 }}
-          style={{ width: '100%', height: '100%', pointerEvents: 'auto' }}
-        >
-          <PerspectiveCamera makeDefault position={[0, 1.2, 5]} fov={50} />
+          <Canvas
+            // Performance-first renderer settings
+            frameloop="always"
+            dpr={dpr}
+            gl={{
+              antialias: true,
+              alpha: true,
+              powerPreference: 'high-performance',
+              toneMapping: THREE.ACESFilmicToneMapping,
+              stencil: false,
+              depth: true,
+              preserveDrawingBuffer: false,
+            }}
+            // Interactive canvas (drag to rotate)
+            style={{ width: '100%', height: '100%', pointerEvents: 'auto' }}
+            camera={{ position: [0, 1.2, 5], fov: 50 }}
+          >
+            <PerspectiveCamera makeDefault position={[0, 1.2, 5]} fov={50} />
 
-          {/* Model */}
-          <Bee3D
-            scale={0.25}
-            position={[2.3, -2.5, -2]}
-            rotation={[0, -Math.PI * 0.4, 0]}
-          />
+            <Suspense fallback={null}>
+              {/* Model */}
+              <Bee3D
+                scale={0.3}
+                position={[5, -5, -2]}
+                rotation={[0, -Math.PI * 0.5, 0]}
+              />
+            </Suspense>
 
-          {/* Controls (interactive) */}
-          <OrbitControls
-            enableZoom
-            enablePan
-            autoRotate={false}
-            minDistance={0.5}
-            maxDistance={20}
-          />
+            {/* Lightweight controls: rotate-only, no damping (avoids extra per-frame work) */}
+            <OrbitControls
+              // “Normal” interaction: drag to rotate, wheel to zoom.
+              enabled
+              enablePan={false}
+              enableZoom
+              zoomSpeed={0.8}
+              // Smooth interaction
+              enableDamping
+              dampingFactor={0.1}
+              rotateSpeed={0.8}
+              // Orbit around the bee (matches user expectation)
+              target={[5, -5, -2]}
+              // Keep zoom sensible
+              minDistance={3}
+              maxDistance={12}
+            />
 
-          {/* Lighting + shadows */}
-          <ambientLight intensity={3} />
-          <directionalLight
-            position={[6, 6, 6]}
-            intensity={2.2}
-            castShadow
-            shadow-mapSize-width={512}
-            shadow-mapSize-height={512}
-            shadow-camera-near={0.5}
-            shadow-camera-far={25}
-            shadow-camera-left={-6}
-            shadow-camera-right={6}
-            shadow-camera-top={6}
-            shadow-camera-bottom={-6}
-          />
-          <hemisphereLight intensity={0.5} groundColor="#0b1220" />
-
-          {/* Shadow catcher floor */}
-          <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -2.2, 0]} receiveShadow>
-            <planeGeometry args={[20, 20]} />
-            <shadowMaterial opacity={0.2} />
-          </mesh>
-        </Canvas>
+            {/* Lighting (shadows disabled for stability/perf across browsers) */}
+            <ambientLight intensity={3} />
+            <directionalLight position={[6, 6, 6]} intensity={2.2} />
+            <hemisphereLight intensity={0.5} groundColor="#0b1220" />
+          </Canvas>
         </div>
       </div>
 

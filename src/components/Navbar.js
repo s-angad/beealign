@@ -1,25 +1,30 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import logo from '../assets/logo.png';
 
 const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
 
   const isHome = location.pathname === '/';
 
-  useEffect(() => {
-    const scrollThreshold = isHome ? 140 : 20;
+  // Performance-first: no scroll listeners.
+  const navStyle = useMemo(() => {
+    // Keep hero readable while letting the bee show through.
+    const baseBackground = isHome ? 'rgba(255, 255, 255, 0.52)' : 'rgba(255, 255, 255, 0.96)';
+    const backgroundColor = isMobileMenuOpen ? 'rgba(255, 255, 255, 0.96)' : baseBackground;
 
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > scrollThreshold);
+    return {
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      right: 0,
+      zIndex: 1000,
+      backgroundColor,
+      borderBottom: '1px solid rgba(209, 154, 0, 0.18)',
+      transition: 'background-color 0.2s ease, border-color 0.2s ease',
     };
-
-    handleScroll();
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [isHome]);
+  }, [isHome, isMobileMenuOpen]);
 
   // Close menu on route change
   useEffect(() => {
@@ -73,28 +78,7 @@ const Navbar = () => {
     <>
       {/* Main Navbar */}
       <nav
-        style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          zIndex: 1000,
-          // Home hero: allow the bee to show through when scrolled.
-          backgroundColor:
-            isMobileMenuOpen
-              ? 'rgba(255, 255, 255, 0.96)'
-              : isScrolled
-                ? (isHome ? 'rgba(255, 255, 255, 0.62)' : 'rgba(255, 255, 255, 0.96)')
-                : 'transparent',
-          backdropFilter: isScrolled || isMobileMenuOpen ? 'blur(12px)' : 'none',
-          borderBottom:
-            isMobileMenuOpen
-              ? '1px solid rgba(209, 154, 0, 0.28)'
-              : isScrolled
-                ? (isHome ? '1px solid rgba(209, 154, 0, 0.22)' : '1px solid rgba(209, 154, 0, 0.28)')
-                : 'none',
-          transition: 'all 0.3s ease',
-        }}
+        style={navStyle}
       >
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }} className="navbar-container">
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }} className="navbar-inner">
@@ -115,7 +99,7 @@ const Navbar = () => {
                   position: 'absolute',
                   background: 'radial-gradient(circle, rgba(255, 215, 0, 0.25) 0%, transparent 70%)',
                   borderRadius: '50%',
-                  filter: 'blur(8px)',
+                  opacity: 0.9,
                 }} />
                 <img 
                   src={logo} 
@@ -125,7 +109,6 @@ const Navbar = () => {
                     objectFit: 'contain',
                     position: 'relative',
                     zIndex: 1,
-                    filter: 'drop-shadow(0 2px 8px rgba(255, 215, 0, 0.4))',
                   }}
                 />
               </div>
@@ -241,7 +224,7 @@ const Navbar = () => {
           transition: 'transform 0.25s ease-out',
           overflowY: 'auto',
           overflowX: 'hidden',
-          boxShadow: isMobileMenuOpen ? '10px 0 36px rgba(15, 23, 42, 0.14)' : 'none',
+          boxShadow: isMobileMenuOpen ? '0 8px 24px rgba(15, 23, 42, 0.10)' : 'none',
           borderRight: '1px solid rgba(15, 23, 42, 0.08)',
         }}
         aria-hidden={!isMobileMenuOpen}
@@ -272,7 +255,7 @@ const Navbar = () => {
                 height: '64px',
                 background: 'radial-gradient(circle, rgba(79, 70, 229, 0.15) 0%, transparent 70%)',
                 borderRadius: '50%',
-                filter: 'blur(6px)',
+                opacity: 0.9,
               }} />
               <img 
                 src={logo} 
@@ -283,7 +266,6 @@ const Navbar = () => {
                   objectFit: 'contain',
                   position: 'relative',
                   zIndex: 1,
-                  filter: 'drop-shadow(0 2px 6px rgba(79, 70, 229, 0.25))',
                 }}
               />
             </div>

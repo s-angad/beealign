@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 
 /**
  * STATIC HONEYCOMB CLUSTERS
@@ -269,9 +269,9 @@ const makeVariantGroup = (group, layerIndex) => {
   };
 };
 
-// 10× density: original + 9 deterministic variant layers (doubles hexagons vs 5×)
+// Performance-first density: keep the premium look, but avoid huge DOM/SVG counts.
 const GROUPS = (() => {
-  const layers = 10; // 1 base + 9 variants
+  const layers = 2; // 1 base + 1 deterministic variant layer
   const out = [...BASE_GROUPS];
   for (let layerIndex = 1; layerIndex < layers; layerIndex += 1) {
     out.push(...BASE_GROUPS.map((g) => makeVariantGroup(g, layerIndex)));
@@ -290,7 +290,7 @@ const HoneycombClusters = () => {
   /**
    * Render a single hexagon SVG shape with 3D depth
    */
-  const renderHexagon = (hex, size = 60, depthFactor = 1, groupId = '') => {
+  const renderHexagon = (hex, size = 60, groupId = '') => {
     const radius = size / 2;
     const pos = axialToPixel(hex.q, hex.r, radius);
     const points = [];
@@ -304,22 +304,13 @@ const HoneycombClusters = () => {
     }
     
     const polygonPoints = points.map(p => p.join(',')).join(' ');
-    
-    // Calculate depth-based transforms for subtle 3D effect
-    const depthValue = hex.depth * depthFactor;
-    const rotateX = Math.sin(depthValue) * 8;
-    const rotateY = Math.cos(depthValue) * 6;
-    const gradientId = `hexGradient-${groupId}-${hex.q}-${hex.r}`;
-    const innerShadowId = `innerShadowGradient-${groupId}`;
+
+    const gradientId = `hexGradient-${groupId}`;
     
     return (
       <g
         key={`hex-${groupId}-${hex.q}-${hex.r}`}
         transform={`translate(${pos.x}, ${pos.y})`}
-        style={{
-          transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(${depthValue * 30}px)`,
-          transformStyle: 'preserve-3d',
-        }}
       >
         {/* Hexagon polygon with soft gradient fill */}
         <polygon
@@ -338,14 +329,6 @@ const HoneycombClusters = () => {
           stroke="#ffffff"
           strokeWidth="1.0"
           strokeOpacity="0.36"
-        />
-        
-        {/* Soft inner shadow for depth */}
-        <polygon
-          points={polygonPoints}
-          fill={`url(#${innerShadowId})`}
-          fillOpacity="0.10"
-          stroke="none"
         />
       </g>
     );
@@ -378,7 +361,7 @@ const HoneycombClusters = () => {
     return Array.from(merged.values());
   };
 
-  const generateClusters = () => {
+  const clusters = useMemo(() => {
     return GROUPS.map((group) => {
       const hexes = getGroupHexes(group);
       const scale = typeof group.scale === 'number' ? group.scale : 1;
@@ -407,47 +390,37 @@ const HoneycombClusters = () => {
             className="honeycomb-svg"
             style={{
               transform: `rotate(${group.rotation}deg)`,
-              perspective: '1000px',
-              transformStyle: 'preserve-3d',
             }}
             aria-hidden="true"
           >
-            {/* Define gradients and filters once per cluster */}
+            {/* Define a single gradient per cluster (keeps SVG defs small). */}
             <defs>
-              {hexes.map((hex) => (
-                <linearGradient 
-                  key={`grad-${group.id}-${hex.q}-${hex.r}`}
-                  id={`hexGradient-${group.id}-${hex.q}-${hex.r}`} 
-                  x1="0%" 
-                  y1="0%" 
-                  x2="100%" 
-                  y2="100%"
-                >
-                  <stop offset="0%" stopColor="#ffffff" stopOpacity="0.90" />
-                  <stop offset="50%" stopColor="#f5f0e8" stopOpacity="0.55" />
-                  <stop offset="100%" stopColor="#e8dcc8" stopOpacity="0.35" />
-                </linearGradient>
-              ))}
-              
-              <radialGradient id={`innerShadowGradient-${group.id}`} cx="35%" cy="35%">
-                <stop offset="0%" stopColor="#ffffff" stopOpacity="0.35" />
-                <stop offset="100%" stopColor="#8b7355" stopOpacity="0.06" />
-              </radialGradient>
+              <linearGradient
+                id={`hexGradient-${group.id}`}
+                x1="0%"
+                y1="0%"
+                x2="100%"
+                y2="100%"
+              >
+                <stop offset="0%" stopColor="#ffffff" stopOpacity="0.90" />
+                <stop offset="50%" stopColor="#f5f0e8" stopOpacity="0.55" />
+                <stop offset="100%" stopColor="#e8dcc8" stopOpacity="0.35" />
+              </linearGradient>
             </defs>
 
             {/* Render connected hexagons for this cluster */}
-            <g style={{ transformStyle: 'preserve-3d' }}>
-              {hexes.map((hex) => renderHexagon(hex, 64, 0.78, group.id))}
+            <g>
+              {hexes.map((hex) => renderHexagon(hex, 64, group.id))}
             </g>
           </svg>
         </div>
       );
     });
-  };
+  }, []);
 
   return (
     <div className="honeycomb-clusters-container" aria-hidden="true">
-      {generateClusters()}
+      {clusters}
     </div>
   );
 };
