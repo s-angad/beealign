@@ -361,7 +361,7 @@ const HoneycombClusters = () => {
       const styleProps = {
         position: 'absolute',
         pointerEvents: 'none',
-        opacity: `calc(var(--honeycomb-opacity-mult, 1) * ${group.opacity}${isLeftAnchored ? ' * 1.35' : ''})`,
+        opacity: `calc(var(--honeycomb-opacity-mult, 1) * ${group.opacity}${isLeftAnchored ? ' * 1.8' : ''})`,
         zIndex: 15,
       };
 
@@ -369,13 +369,13 @@ const HoneycombClusters = () => {
       // Make their diagonals/edges darker so they remain visible on white.
       if (isLeftAnchored) {
         styleProps['--honeycomb-stroke'] = '#0f172a';
-        styleProps['--honeycomb-stroke-opacity'] = 0.32;
-        styleProps['--honeycomb-stroke-width'] = 1.9;
-        styleProps['--honeycomb-fill-opacity'] = 0.22;
-        styleProps['--honeycomb-highlight-opacity'] = 0.12;
-        styleProps['--honeycomb-stop-0'] = '#eef2f7';
-        styleProps['--honeycomb-stop-1'] = '#e5eaf2';
-        styleProps['--honeycomb-stop-2'] = '#d7deea';
+        styleProps['--honeycomb-stroke-opacity'] = 0.65;
+        styleProps['--honeycomb-stroke-width'] = 2.1;
+        styleProps['--honeycomb-fill-opacity'] = 0.14;
+        styleProps['--honeycomb-highlight-opacity'] = 0.08;
+        styleProps['--honeycomb-stop-0'] = '#e2e8f0';
+        styleProps['--honeycomb-stop-1'] = '#d5deea';
+        styleProps['--honeycomb-stop-2'] = '#c6d1e0';
       }
       
       if (group.left !== undefined) styleProps.left = group.left;
