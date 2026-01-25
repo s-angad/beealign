@@ -52,7 +52,7 @@ const BASE_GROUPS = [
     top: '8%',
     left: '2%',
     rotation: 10,
-    opacity: 0.42,
+    opacity: 0.75,
     scale: 1.0,
     parts: [
       { layout: 'diamond', offset: { q: 0, r: 0 } },
@@ -120,7 +120,7 @@ const BASE_GROUPS = [
     top: '40%',
     left: '3%',
     rotation: 16,
-    opacity: 0.26,
+    opacity: 0.76,
     scale: 0.85,
     parts: [
       { layout: 'diamond', offset: { q: 0, r: 0 } },
@@ -134,7 +134,7 @@ const BASE_GROUPS = [
     top: '60%',
     left: '6%',
     rotation: 18,
-    opacity: 0.28,
+    opacity: 0.78,
     scale: 0.88,
     parts: [
       { layout: 'diamond', offset: { q: 0, r: 0 } },
@@ -146,7 +146,7 @@ const BASE_GROUPS = [
     top: '62%',
     right: '16%',
     rotation: -22,
-    opacity: 0.28,
+    opacity: 0.78,
     scale: 0.88,
     parts: [
       { layout: 'diamond', offset: { q: 0, r: 0 } },
@@ -160,7 +160,7 @@ const BASE_GROUPS = [
     top: '78%',
     right: '2%',
     rotation: 22,
-    opacity: 0.30,
+    opacity: 0.70,
     scale: 0.9,
     parts: [
       { layout: 'diamond', offset: { q: 0, r: 0 } },
@@ -174,7 +174,7 @@ const BASE_GROUPS = [
     top: '82%',
     left: '2%',
     rotation: 20,
-    opacity: 0.30,
+    opacity: 0.70,
     scale: 0.9,
     parts: [
       { layout: 'diamond', offset: { q: 0, r: 0 } },
@@ -186,7 +186,7 @@ const BASE_GROUPS = [
     top: '90%',
     left: '42%',
     rotation: -10,
-    opacity: 0.20,
+    opacity: 0.70,
     scale: 0.8,
     parts: [
       { layout: 'diamond', offset: { q: 0, r: 0 } },
@@ -198,7 +198,7 @@ const BASE_GROUPS = [
     top: '22%',
     right: '28%',
     rotation: -8,
-    opacity: 0.22,
+    opacity: 0.72,
     scale: 0.82,
     parts: [
       { layout: 'diamond', offset: { q: 0, r: 0 } },
@@ -314,7 +314,7 @@ const HoneycombClusters = () => {
             fill={`url(#${gradientId})`}
             fillOpacity="var(--honeycomb-fill-opacity, 0.72)"
             stroke="var(--honeycomb-stroke, #b56f06)"
-            strokeWidth="1.6"
+            strokeWidth="var(--honeycomb-stroke-width, 1.6)"
             strokeOpacity="var(--honeycomb-stroke-opacity, 0.84)"
           />
 
@@ -356,12 +356,27 @@ const HoneycombClusters = () => {
     return GROUPS.map((group) => {
       const hexes = getGroupHexes(group);
       const scale = typeof group.scale === 'number' ? group.scale : 1;
+
+      const isLeftAnchored = group.left !== undefined && group.right === undefined;
       const styleProps = {
         position: 'absolute',
         pointerEvents: 'none',
-        opacity: `calc(var(--honeycomb-opacity-mult, 1) * ${group.opacity})`,
+        opacity: `calc(var(--honeycomb-opacity-mult, 1) * ${group.opacity}${isLeftAnchored ? ' * 1.35' : ''})`,
         zIndex: 15,
       };
+
+      // Left-side clusters sit on the white portion of the hero.
+      // Make their diagonals/edges darker so they remain visible on white.
+      if (isLeftAnchored) {
+        styleProps['--honeycomb-stroke'] = '#0f172a';
+        styleProps['--honeycomb-stroke-opacity'] = 0.32;
+        styleProps['--honeycomb-stroke-width'] = 1.9;
+        styleProps['--honeycomb-fill-opacity'] = 0.22;
+        styleProps['--honeycomb-highlight-opacity'] = 0.12;
+        styleProps['--honeycomb-stop-0'] = '#eef2f7';
+        styleProps['--honeycomb-stop-1'] = '#e5eaf2';
+        styleProps['--honeycomb-stop-2'] = '#d7deea';
+      }
       
       if (group.left !== undefined) styleProps.left = group.left;
       if (group.right !== undefined) styleProps.right = group.right;
