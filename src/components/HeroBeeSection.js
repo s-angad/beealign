@@ -48,9 +48,10 @@ const HeroBeeSection = () => {
             <Suspense fallback={null}>
               {/* Model */}
               <Bee3D
-                scale={0.3}
-                position={[5, -5, -2]}
-                rotation={[0, -Math.PI * 0.5, 0]}
+                // Hero placement: keep the bee readable and centered on the right
+                scale={0.23}
+                position={[4, -3, -0.6]}
+                rotation={[0.15, -Math.PI * 0.6, 0.25]}
               />
             </Suspense>
 
@@ -59,17 +60,14 @@ const HeroBeeSection = () => {
               // “Normal” interaction: drag to rotate, wheel to zoom.
               enabled
               enablePan={false}
-              enableZoom
-              zoomSpeed={0.8}
+              enableZoom={false}
+              enableDolly={false}
               // Smooth interaction
               enableDamping
               dampingFactor={0.1}
-              rotateSpeed={0.8}
+              rotateSpeed={0.4}
               // Orbit around the bee (matches user expectation)
-              target={[5, -5, -2]}
-              // Keep zoom sensible
-              minDistance={3}
-              maxDistance={12}
+              target={[2.1, -1.15, -0.6]}
             />
 
             {/* Lighting (shadows disabled for stability/perf across browsers) */}
