@@ -12,11 +12,12 @@ const SectionHeading = ({
     center: 'text-center mx-auto',
     right: 'text-right ml-auto',
   };
+  
 
   return (
     <div className={`max-w-3xl px-1 ${alignmentClasses[align]} ${className}`}>
       {subtitle && (
-        <span className="subtitle inline-block text-bee-yellow font-semibold text-xs sm:text-sm tracking-wider uppercase mb-3 sm:mb-4 block">
+        <span className="subtitle inline-block text-bee-orange font-semibold text-xs sm:text-sm tracking-wider uppercase mb-3 sm:mb-4 block">
           {subtitle}
         </span>
       )}

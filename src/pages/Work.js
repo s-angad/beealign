@@ -90,11 +90,7 @@ const Work = () => {
       </Helmet>
 
       {/* Hero Section */}
-      <section className="relative min-h-[60vh] flex items-center justify-center bg-hero-gradient bg-grid py-12 sm:py-16 lg:py-20">
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-1/3 left-1/4 w-64 sm:w-80 lg:w-96 h-64 sm:h-80 lg:h-96 bg-bee-yellow/10 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-1/3 right-1/4 w-48 sm:w-64 lg:w-80 h-48 sm:h-64 lg:h-80 bg-bee-yellow/5 rounded-full blur-3xl"></div>
-        </div>
+      <section className="relative min-h-[60vh] flex items-center justify-center bg-hero-dual-vignette bg-grid py-12 sm:py-16 lg:py-20">
 
         <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-bee-white leading-tight mb-4 sm:mb-6">
@@ -212,11 +208,8 @@ const Work = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
-            <Button to="/contact" size="lg" fullWidthMobile>
-              Start Your Project
-              <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
+            <Button to="/contact" variant="primary" size="lg" fullWidthMobile>
+              Request a Demo
             </Button>
             <Button to="/solutions" variant="outline" size="lg" fullWidthMobile>
               Explore Solutions

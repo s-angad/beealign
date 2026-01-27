@@ -76,7 +76,7 @@ const Home = () => {
   ];
 
   return (
-    <div className="pt-16 sm:pt-16 lg:pt-20">
+    <div>
       <Helmet>
         <title>Bixxy Bee | Intelligent Business Automation Solutions</title>
         <meta name="description" content="Bixxy Bee builds intelligent automation solutions for gyms, clinics, and businesses. Custom software, AI solutions, and ready-to-deploy platforms that transform operations." />
@@ -164,7 +164,7 @@ const Home = () => {
                           <div className="absolute inset-0 bg-gradient-to-t from-forge-dark via-transparent to-transparent opacity-40"></div>
                         </div>
                         <div
-                          className="text-bee-yellow mb-4 group-hover:text-bee-yellow-light transition-colors"
+                            className="text-[#e7c873] mb-4 group-hover:text-bee-yellow-light transition-colors"
                         >
                           <solution.icon />
                         </div>

@@ -86,7 +86,7 @@ const Navbar = () => {
       {/* Main Navbar */}
       <nav
         style={navStyle}
-        className="nav-accent"
+        className="nav-accent backdrop-blur-md bg-white/60 border-b border-white/30 shadow-lg"
       >
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px' }} className="navbar-container">
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }} className="navbar-inner">
@@ -157,12 +157,13 @@ const Navbar = () => {
                   display: 'inline-flex',
                   alignItems: 'center',
                   padding: '10px 20px',
-                  backgroundColor: '#4F46E5',
-                  color: 'white',
+                  backgroundColor: '#e6c578',
+                  color: '#5e594c',
                   fontSize: '14px',
                   fontWeight: 500,
                   borderRadius: '8px',
                   textDecoration: 'none',
+                  border: '1px solid brown',
                 }}
               >
                 Get Started

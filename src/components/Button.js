@@ -19,7 +19,7 @@ const Button = ({
   const variants = {
     primary: 'glass-panel bg-gradient-to-br from-bee-yellow to-bee-amber hover:from-bee-amber hover:to-bee-yellow text-bee-dark focus:ring-bee-yellow/50 shadow-lg hover:shadow-xl hover:floating-layer border border-amber-300/50 font-bold',
     secondary: 'glass-panel hover:floating-layer text-bee-dark border border-bee-yellow/40 focus:ring-bee-yellow/30 shadow-sm',
-    outline: 'bg-transparent hover:glass-panel hover:bg-bee-yellow/10 active:bg-bee-yellow/20 text-bee-yellow border-2 border-bee-yellow hover:border-bee-yellow-dark focus:ring-bee-yellow',
+    outline: 'bg-[#f7f3ed]/70 hover:bg-[#f7f3ed]/90 active:bg-[#f7f3ed] text-bee-brown border-2 border-bee-yellow hover:border-bee-yellow-dark focus:ring-bee-yellow',
     ghost: 'text-bee-dark hover:glass-panel hover:border hover:border-bee-yellow/30 focus:ring-bee-yellow/30',
   };
 

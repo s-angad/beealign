@@ -19,7 +19,7 @@ const HeroBeeSection = () => {
   return (
     <section className="relative h-screen w-full overflow-visible canvas-chamber">
       {/* Three.js Canvas Layer (z-10) */}
-      <div className="absolute inset-0 z-10 overflow-visible glass-panel honeycomb-stage bg-hero-dark">
+      <div className="absolute inset-0 z-10 overflow-visible honeycomb-stage bg-hero-dual-vignette">
         {/* Subtle dark vignette behind the bee for contrast (no model changes). */}
         <div className="absolute inset-0 z-0 pointer-events-none bee-vignette" aria-hidden="true" />
 
@@ -54,7 +54,7 @@ const HeroBeeSection = () => {
               <Bee3D
                 // Hero placement: keep the bee readable and centered on the right
                 scale={0.23}
-                position={[4, -3, -0.6]}
+                position={[4.25, -4, -0.6]}
                 rotation={[0.15, -Math.PI * 0.6, 0.25]}
               />
             </Suspense>
@@ -114,7 +114,15 @@ const HeroBeeSection = () => {
           <div className="max-w-2xl">
             {/* Badge */}
             <div className="flex justify-center">
-              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-bee-yellow/20 bg-bee-yellow/10 px-4 py-2 text-xs sm:text-sm text-bee-yellow">
+              <div
+                className="mb-6 inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs sm:text-sm"
+                style={{
+                  color: 'rgb(121, 84, 45)',
+                  border: '2px solid rgb(245, 179, 109)',
+                  backgroundColor: 'rgba(245, 179, 109, 0.12)',
+                }}
+              >
+
                 <span className="h-2 w-2 rounded-full bg-bee-yellow" />
                 Technology & Automation Solutions
               </div>
@@ -122,19 +130,19 @@ const HeroBeeSection = () => {
 
             {/* Heading */}
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-bee-white">
-              Intelligent <span className="text-bee-yellow">Automation</span>
+              Intelligent <span className="text-bee-yellow" style={{ color: "rgb(245, 179, 109)" }}>Automation</span>
               <br />
               For Every Business
             </h1>
 
             {/* Subheading */}
-            <p className="mt-6 text-base sm:text-lg lg:text-xl text-slate-600 leading-relaxed">
+            <p className="mt-6 text-base sm:text-lg lg:text-xl text-slate-600 leading-relaxed" style={{color: "rgb(92, 69, 38)"}}>
               We build smart, reliable automation solutions that transform business operations.
             </p>
 
             {/* CTAs */}
             <div className="mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4 pointer-events-auto">
-              <Button to="/solutions" size="lg" fullWidthMobile>
+              <Button to="/solutions" variant="primary" size="lg" fullWidthMobile>
                 Explore Solutions
               </Button>
               <Button to="/contact" variant="outline" size="lg" fullWidthMobile>

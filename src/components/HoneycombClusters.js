@@ -50,15 +50,13 @@ const BASE_GROUPS = [
   {
     id: 'group-1',
     top: '8%',
-    left: '2%',
+    left: '4%', // moved right to reduce overlap
     rotation: 10,
-    opacity: 0.75,
+    opacity: 0.38, // reduced opacity
     scale: 1.0,
     parts: [
       { layout: 'diamond', offset: { q: 0, r: 0 } },
       { layout: 'triangle', offset: { q: 2, r: 0 } },
-      // +4 hex (diamond) attached to the left side
-      { layout: 'diamond', offset: { q: -2, r: 0 } },
     ],
   },
   {
@@ -118,27 +116,23 @@ const BASE_GROUPS = [
   {
     id: 'group-6',
     top: '40%',
-    left: '3%',
+    left: '7%', // moved right to reduce overlap
     rotation: 16,
-    opacity: 0.76,
+    opacity: 0.32, // reduced opacity
     scale: 0.85,
     parts: [
       { layout: 'diamond', offset: { q: 0, r: 0 } },
-      { layout: 'triangle', offset: { q: -2, r: 0 } },
-      // +4 hex (diamond) attached further left
-      { layout: 'diamond', offset: { q: -3, r: 0 } },
     ],
   },
   {
     id: 'group-7',
     top: '60%',
-    left: '6%',
+    left: '10%', // moved right to reduce overlap
     rotation: 18,
-    opacity: 0.78,
+    opacity: 0.28, // reduced opacity
     scale: 0.88,
     parts: [
       { layout: 'diamond', offset: { q: 0, r: 0 } },
-      { layout: 'triangle', offset: { q: 0, r: 2 } },
     ],
   },
   {
