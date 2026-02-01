@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
+import { motion } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import logo from '../assets/logo.png';
 
@@ -132,42 +133,88 @@ const Navbar = () => {
             {/* Desktop Navigation */}
             <div className="desktop-nav" style={{ display: 'none', alignItems: 'center', gap: '4px' }}>
               {navLinks.map((link) => (
-                <Link
+                <motion.div
                   key={link.path}
-                  to={link.path}
-                  style={{
-                    padding: '8px 16px',
-                    borderRadius: '8px',
-                    fontSize: '14px',
-                    fontWeight: 500,
-                  color: isActive(link.path) ? '#D19A00' : '#0F172A',
-                  backgroundColor: isActive(link.path) ? 'rgba(255, 215, 0, 0.14)' : 'transparent',
-                    textDecoration: 'none',
+                  whileHover={{
+                    scale: 1.08,
+                    y: -2,
+                    boxShadow: '0 4px 16px rgba(15,23,42,0.12)',
                   }}
+                  style={{ display: 'inline-block', borderRadius: '8px' }}
                 >
-                  {link.name}
-                </Link>
+                  <motion.span
+                    whileHover={{
+                      color: '#e6c578', // gold accent on hover
+                      backgroundColor: 'rgba(255, 215, 0, 0.10)',
+                    }}
+                    transition={{ type: 'spring', stiffness: 340, damping: 22 }}
+                    style={{
+                      display: 'inline-block',
+                      borderRadius: '8px',
+                      padding: '0',
+                    }}
+                  >
+                    <Link
+                      to={link.path}
+                      style={{
+                        padding: '8px 16px',
+                        borderRadius: '8px',
+                        fontSize: '14px',
+                        fontWeight: 500,
+                        color: isActive(link.path) ? '#D19A00' : '#0F172A',
+                        backgroundColor: isActive(link.path) ? 'rgba(255, 215, 0, 0.14)' : 'transparent',
+                        textDecoration: 'none',
+                        transition: 'color 0.18s, background 0.18s',
+                        boxShadow: 'none',
+                        display: 'inline-block',
+                      }}
+                    >
+                      {link.name}
+                    </Link>
+                  </motion.span>
+                </motion.div>
               ))}
             </div>
             {/* Desktop CTA */}
             <div className="desktop-cta" style={{ display: 'none' }}>
-              <Link
-                to="/contact"
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  padding: '10px 20px',
-                  backgroundColor: '#e6c578',
-                  color: '#5e594c',
-                  fontSize: '14px',
-                  fontWeight: 500,
-                  borderRadius: '8px',
-                  textDecoration: 'none',
-                  border: '1px solid brown',
+              <motion.div
+                whileHover={{
+                  scale: 1.08,
+                  y: -2,
+                  boxShadow: '0 4px 16px rgba(15,23,42,0.12)',
                 }}
+                transition={{ type: 'spring', stiffness: 340, damping: 22 }}
+                style={{ display: 'inline-block', borderRadius: '8px' }}
               >
-                Get Started
-              </Link>
+                <motion.span
+                  whileHover={{
+                    color: '#e6c578',
+                    backgroundColor: 'rgba(255, 215, 0, 0.10)',
+                  }}
+                  transition={{ type: 'spring', stiffness: 340, damping: 22 }}
+                  style={{ display: 'inline-block', borderRadius: '8px', padding: '0' }}
+                >
+                  <Link
+                    to="/contact"
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      padding: '10px 20px',
+                      backgroundColor: '#e6c578',
+                      color: '#5e594c',
+                      fontSize: '14px',
+                      fontWeight: 500,
+                      borderRadius: '8px',
+                      textDecoration: 'none',
+                      border: '1px solid brown',
+                      transition: 'color 0.18s, background 0.18s',
+                      boxShadow: 'none',
+                    }}
+                  >
+                    Get Started
+                  </Link>
+                </motion.span>
+              </motion.div>
             </div>
             {/* Mobile Menu Button */}
             <button

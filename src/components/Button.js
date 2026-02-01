@@ -35,41 +35,53 @@ const Button = ({
 
   const combinedClassName = `${baseStyles} ${variants[variant]} ${sizes[size]} ${mobileWidth} ${className}`;
 
+  const MotionDiv = require('framer-motion').motion.div;
+  const hoverEffect = {
+    whileHover: { scale: 1.05, y: -6, boxShadow: '0 8px 32px 0 rgba(0,0,0,0.12), 0 1.5px 8px 0 rgba(255,193,7,0.10)' },
+    transition: { type: 'spring', stiffness: 300 }
+  };
+
   // Render as Link if "to" prop is provided (internal navigation)
   if (to) {
     return (
-      <Link to={to} className={combinedClassName} {...props}>
-        {children}
-      </Link>
+      <MotionDiv {...hoverEffect} style={{ display: 'inline-block' }}>
+        <Link to={to} className={combinedClassName} {...props}>
+          {children}
+        </Link>
+      </MotionDiv>
     );
   }
 
   // Render as anchor if "href" prop is provided (external link)
   if (href) {
     return (
-      <a
-        href={href}
-        className={combinedClassName}
-        target="_blank"
-        rel="noopener noreferrer"
-        {...props}
-      >
-        {children}
-      </a>
+      <MotionDiv {...hoverEffect} style={{ display: 'inline-block' }}>
+        <a
+          href={href}
+          className={combinedClassName}
+          target="_blank"
+          rel="noopener noreferrer"
+          {...props}
+        >
+          {children}
+        </a>
+      </MotionDiv>
     );
   }
 
   // Render as button by default
   return (
-    <button
-      type={type}
-      className={combinedClassName}
-      onClick={onClick}
-      disabled={disabled}
-      {...props}
-    >
-      {children}
-    </button>
+    <MotionDiv {...hoverEffect} style={{ display: 'inline-block' }}>
+      <button
+        type={type}
+        className={combinedClassName}
+        onClick={onClick}
+        disabled={disabled}
+        {...props}
+      >
+        {children}
+      </button>
+    </MotionDiv>
   );
 };
 

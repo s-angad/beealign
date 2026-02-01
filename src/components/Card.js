@@ -18,11 +18,14 @@ const Card = ({
     <div
       className={`
         relative overflow-hidden rounded-2xl
-        glass-panel card-surface border border-white/60 card-glow
-        ${hover ? 'transition-all duration-500 hover:shadow-lg hover:floating-layer hover:border-bee-yellow/40' : ''}
+        bg-white border border-bee-navy/30 shadow-lg
+        ${hover ? 'transition-all duration-200 hover:shadow-2xl hover:scale-[1.04] hover:border-bee-yellow/60' : ''}
         ${paddingClasses[padding]}
         ${className}
       `}
+      style={{
+        color: '#1a2233',
+      }}
     >
       {children}
     </div>

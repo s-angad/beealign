@@ -1,6 +1,8 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Button, Card, SectionHeading } from '../components';
+import { mx_heighttonormal } from 'three/tsl';
+import { color } from 'framer-motion';
 
 const Solutions = () => {
   const solutions = [
@@ -8,7 +10,7 @@ const Solutions = () => {
       id: 'business-automation',
       title: 'Business Automation',
       subtitle: 'Streamline Operations',
-      image: '/images/solutions-automation.jpg',
+      image: '/images/so.png',
       description: 'Eliminate repetitive tasks and manual processes with intelligent automation systems designed for real-world business needs.',
       features: [
         {
@@ -137,76 +139,107 @@ const Solutions = () => {
   ];
 
   return (
-    <div className="pt-14 sm:pt-16 lg:pt-20">
-      <Helmet>
+    <div className="pt-14 sm:pt-16 lg:pt-20" style={{ padding: 0, margin: 0 }}>
+      <Helmet >
         <title>Solutions | Bixxy Bee</title>
         <meta name="description" content="Business automation, AI solutions, and custom projects. Bixxy Bee delivers technology that solves real problems for gyms, clinics, and enterprises." />
       </Helmet>
-      {/* Hero Section */}
-      <section className="relative py-16 sm:py-20 lg:py-32 bg-hero-gradient bg-grid section-fade-bottom">
-        <div className="absolute inset-0 overflow-hidden hidden sm:block">
-          <div className="absolute top-1/4 right-1/4 w-64 sm:w-80 lg:w-96 h-64 sm:h-80 lg:h-96 bg-bee-yellow/10 rounded-full blur-3xl"></div>
+      {/* Hero Section (light, improved contrast) */}
+      <section className="relative py-10 sm:py-12 lg:py-16 bg-hero-gradient zbg-grid section-fade-bottom" style={{ marginTop: "5vh" }}>
+        <div className="absolute inset-0 overflow-hidden hidden sm:block" >
+          <div className="absolute top-1/4 right-1/4 w-64 sm:w-80 lg:w-96 h-64 sm:h-80 lg:h-96 bg-bee-yellow/10 rounded-full blur-3xl" ></div>
         </div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <span className="inline-block text-bee-yellow font-medium text-xs sm:text-sm tracking-wider uppercase mb-3 sm:mb-4">
-              Solutions
-            </span>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-bee-white leading-tight mb-4 sm:mb-6">
-              Technology That Solves{' '}
-              <span className="text-highlight">Real Problems</span>
-            </h1>
-            <p className="text-base sm:text-lg lg:text-xl text-bee-slate-400 leading-relaxed">
-              We build automation and software solutions tailored to the way your business actually worksÃ¢â‚¬â€not generic tools that force you to adapt.
-            </p>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+            <div className="max-w-3xl flex flex-col justify-center h-full">
+              <span className="inline-block text-bee-yellow font-medium text-lg sm:text-xl tracking-wider uppercase mb-3 sm:mb-4" style={{ fontWeight: 7000, letterSpacing: '0.08em' }}>
+                Solutions
+              </span>
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-bee-white leading-tight mb-4 sm:mb-6 whitespace-nowrap">
+                <span>Technology That Solves</span><br />
+                <span className="text-pink-500">Real world Problems</span>
+              </h1>
+              <p className="text-base sm:text-lg lg:text-xl text-bee-slate-400 leading-relaxed">
+                <span className="text-bee-slate-700">We build automation and software solutions tailored to the way your business actually works—not generic tools that force you to adapt.</span>
+              </p>
+            </div>
+            <div className="flex justify-center md:justify-end">
+
+              {(() => {
+                const MotionImg = require('framer-motion').motion.img;
+                return (
+                  <MotionImg
+                    src="/images/solutions-automation.jpg"
+                    alt="Solutions Hero"
+                    className="w-full h-full object-cover rounded-2xl shadow-xl"
+                    style={{ transform: 'scaleX(1)' }}
+                    whileHover={{ scale: 1.05, y: -10, boxShadow: '0 8px 32px 0 rgba(0,0,0,0.18), 0 1.5px 8px 0 rgba(255,193,7,0.12)' }}
+                    transition={{ type: 'spring', stiffness: 300 }}
+                  />
+                );
+              })()}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Benefits Section */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-bee-navy">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {benefits.map((benefit, index) => (
-              <div key={index} className="flex items-start space-x-3 sm:space-x-4">
-                <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-bee-yellow/10 border border-bee-yellow/20 rounded-lg flex items-center justify-center text-bee-yellow">
-                  {benefit.icon}
-                </div>
-                <div>
-                  <h3 className="text-bee-white-100 font-semibold mb-1 text-sm sm:text-base">{benefit.title}</h3>
-                  <p className="text-bee-slate-400 text-xs sm:text-sm">{benefit.description}</p>
-                </div>
-              </div>
-            ))}
+      {/* Benefits Section (light, improved contrast) */}
+      <section className="py-8 sm:py-10 lg:py-12 bg-hero-gradient zbg-grid section-fade-bottom" >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" >
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" >
+            {benefits.map((benefit, index) => {
+
+              // Use framer-motion for hover effect
+              const MotionDiv = require('framer-motion').motion.div;
+              return (
+                <MotionDiv
+                  key={index}
+                  whileHover={{ scale: 1.05, y: -10, boxShadow: '0 8px 32px 0 rgba(0,0,0,0.18), 0 1.5px 8px 0 rgba(255,193,7,0.12)' }}
+                  transition={{ type: 'spring', stiffness: 300 }}
+                  className={`flex items-start space-x-3 sm:space-x-4 p-5 rounded-xl bg-white/60 shadow-sm border-2 relative overflow-hidden`}
+                  style={{ cursor: 'pointer' }}
+                >
+                  <span className={`absolute inset-0 rounded-xl pointer-events-none border-2 border-transparent bg-gradient-to-br z-0`} style={{ WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)', maskComposite: 'exclude' }}></span>
+                  <div className="relative z-10 flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 bg-yellow-200 border border-yellow-300 rounded-lg flex items-center justify-center text-yellow-700">
+                    {benefit.icon}
+                  </div>
+                  <div className="relative z-10">
+                    <h3 className="text-gray-900 font-semibold mb-1 text-sm sm:text-base">{benefit.title}</h3>
+                    <p className="text-gray-700 text-xs sm:text-sm">{benefit.description}</p>
+                  </div>
+                </MotionDiv>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* Solutions Detail Sections */}
+      {/* Solutions Detail Sections (alternate backgrounds) */}
       {solutions.map((solution, index) => (
         <section
           key={solution.id}
           id={solution.id}
-          className={`py-16 sm:py-20 lg:py-32 ${index % 2 === 1 ? 'bg-bee-navy' : 'bg-bee-darker'}`}
+          className={`py-16 sm:py-20 lg:py-32 ${index % 2 === 0 ? 'bg-bee-navy' : 'bg-bee-darker'}`}
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-20 items-start">
               {/* Content */}
               <div className={index % 2 === 1 ? 'lg:order-2' : ''}>
-                <div className="text-bee-yellow mb-3 sm:mb-4 [&>svg]:w-10 [&>svg]:h-10 sm:[&>svg]:w-12 sm:[&>svg]:h-12">
+                <div className="text-bee-yellow mb-3 sm:mb-4 [&>svg]:w-16 [&>svg]:h-16 sm:[&>svg]:w-20 sm:[&>svg]:h-20">
                   {solution.icon}
                 </div>
-                <span className="inline-block text-bee-yellow font-medium text-xs sm:text-sm tracking-wider uppercase mb-2">
+                <span className="inline-block text-bee-yellow font-bold text-lg sm:text-xl tracking-wider uppercase mb-2" style={{ letterSpacing: '0.08em' }}>
                   {solution.subtitle}
                 </span>
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-bee-white mb-3 sm:mb-4">
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-3 sm:mb-4" style={{ lineHeight: 1.1, color: solution.id === 'ai-digital' ? '#23272f' : '#f7fafc' }}>
                   {solution.title}
                 </h2>
-                <p className="text-bee-slate-400 text-base sm:text-lg leading-relaxed mb-6 sm:mb-8">
+
+                <p className="text-base sm:text-lg leading-relaxed mb-6 sm:mb-8" style={{ color: '#4a5568', fontWeight: 500 }}>
                   {solution.description}
                 </p>
                 <Button to="/contact" fullWidthMobile>
-                  Discuss Your Project
+                  Let's Get Started
                   <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
@@ -216,18 +249,26 @@ const Solutions = () => {
               {/* Image or Features Grid */}
               {index % 2 === 0 ? (
                 <div className="relative">
-                  <img
-                    src={solution.image}
-                    alt={solution.title}
-                    className="w-full rounded-xl sm:rounded-2xl object-cover h-64 sm:h-80 lg:h-96 border border-bee-slate-700/50"
-                  />
+                  {(() => {
+                    const MotionImg = require('framer-motion').motion.img;
+                    return (
+                      <MotionImg
+                        src={solution.image}
+                        alt={solution.title}
+                        className="w-full rounded-xl sm:rounded-2xl object-cover h-64 sm:h-80 lg:h-96 border border-bee-slate-700/50"
+                        whileHover={{ scale: 1.05, y: -10, boxShadow: '0 8px 32px 0 rgba(0,0,0,0.18), 0 1.5px 8px 0 rgba(255,193,7,0.12)' }}
+                        transition={{ type: 'spring', stiffness: 300 }}
+                        style={{ cursor: 'pointer' }}
+                      />
+                    );
+                  })()}
                 </div>
               ) : (
                 <div className={`grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 lg:order-1`}>
                   {solution.features.map((feature, featureIndex) => (
                     <Card key={featureIndex} padding="md">
-                      <h4 className="text-bee-white-100 font-semibold mb-1 sm:mb-2 text-sm sm:text-base">{feature.title}</h4>
-                      <p className="text-bee-slate-400 text-xs sm:text-sm">{feature.description}</p>
+                      <h4 className="font-semibold mb-1 sm:mb-2 text-sm sm:text-base" style={{ color: '#c8a448' }}>{feature.title}</h4>
+                      <p className="text-xs sm:text-sm" style={{ color: '#23272f' }}>{feature.description}</p>
                     </Card>
                   ))}
                 </div>
@@ -239,10 +280,8 @@ const Solutions = () => {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mt-8 sm:mt-12">
                 {solution.features.map((feature, featureIndex) => (
                   <Card key={featureIndex} padding="md">
-                    <h4 className="text-bee-white-100 font-semibold mb-1 sm:mb-2 text-sm sm:text-base">{feature.title}</h4>
-                    <p className="text-bee-slate-400 text-xs sm:text-sm leading-relaxed">
-                      {feature.description}
-                    </p>
+                    <h4 className="font-bold mb-1 sm:mb-2 text-base sm:text-lg" style={{ color: '#c8a448' }}>{feature.title}</h4>
+                    <p className="text-sm sm:text-base" style={{ color: '#23272f', fontWeight: 500 }}>{feature.description}</p>
                   </Card>
                 ))}
               </div>
@@ -251,8 +290,8 @@ const Solutions = () => {
         </section>
       ))}
 
-      {/* CTA Section */}
-      <section className="py-16 sm:py-20 lg:py-32 bg-bee-dark">
+      {/* CTA Section (light) */}
+      <section className="py-16 sm:py-20 lg:py-32 bg-hero-gradient zbg-grid section-fade-bottom">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto">
             <SectionHeading

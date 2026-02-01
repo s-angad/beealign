@@ -1,3 +1,96 @@
+/* ===== SMOOTH SECTION TRANSITIONS (CLOUDY FOG) ===== */
+
+.section-smooth {
+  position: relative;
+  isolation: isolate;
+}
+
+/* TOP cloud fade */
+.section-smooth::before {
+  content: '';
+  position: absolute;
+  top: -120px;
+  left: 0;
+  right: 0;
+  height: 120px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* BOTTOM cloud fade */
+.section-smooth::after {
+  content: '';
+  position: absolute;
+  bottom: -120px;
+  left: 0;
+  right: 0;
+  height: 120px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Light → Dark blend */
+.section-light::after {
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0),
+    rgba(15, 23, 42, 0.35),
+    rgba(15, 23, 42, 0.65)
+  );
+}
+
+/* Dark → Light blend */
+.section-dark::after {
+  background: linear-gradient(
+    to bottom,
+    rgba(15, 23, 42, 0),
+    rgba(255, 255, 255, 0.45),
+    rgba(255, 255, 255, 0.85)
+  );
+}
+
+/* Top fog (same logic, reversed) */
+.section-light::before {
+  background: linear-gradient(
+    to top,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.85)
+  );
+}
+
+.section-dark::before {
+  background: linear-gradient(
+    to top,
+    rgba(15, 23, 42, 0),
+    rgba(15, 23, 42, 0.85)
+  );
+}
+
+/* Optional: Add a subtle radial cloud for extra cinematic effect */
+.section-smooth::before,
+.section-smooth::after {
+  /* Overlay a soft radial gradient for extra depth */
+  background-repeat: no-repeat;
+  background-blend-mode: lighten;
+}
+
+.section-smooth::before {
+  background-image:
+    radial-gradient(ellipse 80% 60% at 50% 100%, rgba(255,255,255,0.18) 0%, transparent 80%);
+}
+
+.section-smooth::after {
+  background-image:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255,255,255,0.18) 0%, transparent 80%);
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .section-smooth::before,
+  .section-smooth::after {
+    background: none !important;
+  }
+}
 /* Bouncy image hover effect for all images */
 .img-bounce {
   transition: transform 0.32s cubic-bezier(.22,1.15,.32,1), box-shadow 0.22s cubic-bezier(.22,1.15,.32,1);
@@ -514,7 +607,12 @@ body.menu-open {
   */
   .bg-bee-dark { background-color: #ffffff !important; }
   .bg-bee-darker { background-color: #f8fafc !important; }
-  .bg-bee-navy { background-color: #fffaf0 !important; }
+  .bg-bee-navy {background-image:
+      radial-gradient(900px 500px at 70% 30%, rgba(255, 215, 0, 0.08), transparent 60%),
+      radial-gradient(900px 500px at 25% 80%, rgba(255, 179, 0, 0.06), transparent 60%);
+    background-size: auto, auto;
+    background-position: center, center;
+    background-repeat: no-repeat !important; }
 
   .bg-bee-dark\/50 { background-color: rgba(255, 255, 255, 0.72) !important; }
   .bg-bee-slate-700 { background-color: rgba(220, 188, 125, 0.275) !important; }

@@ -513,7 +513,7 @@ const Home = () => {
               {/* Founder 1 */}
               <AnimationWrappers.StaggerItem>
                 <motion.div
-                  whileHover={{ scale: 1.03, y: -10 }}
+                  
                   transition={{ type: 'spring', stiffness: 300 }}
                   className="group bg-gradient-to-br from-bee-slate-800/50 to-bee-navy/30 border border-bee-slate-700/50 rounded-xl sm:rounded-2xl p-6 sm:p-8 hover:border-bee-yellow/30 transition-all duration-300"
                 >
@@ -541,7 +541,7 @@ const Home = () => {
               {/* Founder 2 */}
               <AnimationWrappers.StaggerItem>
                 <motion.div
-                  whileHover={{ scale: 1.03, y: -10 }}
+                  
                   transition={{ type: 'spring', stiffness: 300 }}
                   className="group bg-gradient-to-br from-bee-slate-800/50 to-bee-navy/30 border border-bee-slate-700/50 rounded-xl sm:rounded-2xl p-6 sm:p-8 hover:border-bee-yellow/30 transition-all duration-300"
                 >
