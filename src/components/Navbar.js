@@ -37,7 +37,7 @@ const Navbar = () => {
   // Close menu on route change
   useEffect(() => {
     setIsMobileMenuOpen(false);
-  }, [location.pathname]);
+  }, [location.pathname, location.hash]);
 
   // Prevent body scroll when mobile menu is open
   useEffect(() => {
@@ -76,11 +76,14 @@ const Navbar = () => {
     { name: 'Products', path: '/products' },
     { name: 'Services', path: '/services' },
     { name: 'How We Work', path: '/how-we-work' },
-    { name: 'Blog', path: '/blog' },
+    { name: 'Portfolio', path: '/work#portfolio' },
     { name: 'Contact', path: '/contact' },
   ];
 
-  const isActive = (path) => location.pathname === path;
+  const isActive = (path) => {
+    const basePath = String(path).split('#')[0];
+    return location.pathname === basePath;
+  };
 
   return (
     <>

@@ -429,6 +429,28 @@ body.menu-open {
     opacity: 0.55;
   }
 
+  /* Home: Our Work card variants (subtle but distinct). */
+  .work-card-variant--product {
+    background:
+      radial-gradient(900px 460px at 18% 18%, rgba(255, 215, 0, 0.14), transparent 60%),
+      radial-gradient(700px 420px at 90% 10%, rgba(255, 179, 0, 0.08), transparent 62%),
+      linear-gradient(135deg, rgba(15, 23, 42, 0.92) 0%, rgba(11, 18, 32, 0.96) 100%) !important;
+  }
+
+  .work-card-variant--internal {
+    background:
+      radial-gradient(900px 460px at 15% 15%, rgba(56, 189, 248, 0.12), transparent 62%),
+      radial-gradient(700px 420px at 85% 25%, rgba(34, 211, 238, 0.08), transparent 64%),
+      linear-gradient(135deg, rgba(15, 23, 42, 0.92) 0%, rgba(11, 18, 32, 0.96) 100%) !important;
+  }
+
+  .work-card-variant--digital {
+    background:
+      radial-gradient(900px 460px at 20% 20%, rgba(168, 85, 247, 0.14), transparent 60%),
+      radial-gradient(700px 420px at 88% 22%, rgba(236, 72, 153, 0.08), transparent 62%),
+      linear-gradient(135deg, rgba(15, 23, 42, 0.92) 0%, rgba(11, 18, 32, 0.96) 100%) !important;
+  }
+
   /* When a section is intentionally darker, reduce honeycomb prominence. */
   .dark-accent-zone {
     /* Dark sections: honeycomb reads darker (not bright gold), but stays visible. */
@@ -549,6 +571,15 @@ body.menu-open {
     color: rgba(226, 232, 240, 0.68) !important;
   }
 
+  /* Ensure SectionHeading stays readable on dark sections. */
+  .dark-accent-zone .section-title {
+    color: #f8fafc !important;
+  }
+
+  .dark-accent-zone .subtitle {
+    color: #fbbf24 !important;
+  }
+
   .text-muted {
     color: #4b5563 !important;
     font-weight: 400;
@@ -618,12 +649,12 @@ body.menu-open {
   .bg-bee-slate-700 { background-color: rgba(220, 188, 125, 0.275) !important; }
 
   .text-bee-white { color: #0f172a !important; }
-  .text-bee-white-100 { color: #f2f5fd !important; }
+  .text-bee-white-100 { color: #000000 !important; }
 
   .border-bee-slate-700 { border-color: rgb(206, 156, 110) !important; }
 
   /* Lighten common dark gradients */
-  .from-bee-slate-800 { --tw-gradient-from: rgba(255, 255, 255, 0.92) !important; --tw-gradient-to: rgba(255, 255, 255, 0) !important; }
+  .from-bee-slate-800 { --tw-gradient-from: rgba(255, 225, 181, 0.92) !important; --tw-gradient-to: rgba(255, 255, 255, 0) !important; }
   .from-bee-slate-800\/50 { --tw-gradient-from: rgba(255, 255, 255, 0.75) !important; --tw-gradient-to: rgba(255, 255, 255, 0) !important; }
   .from-bee-darker { --tw-gradient-from: rgba(248, 250, 252, 0.92) !important; --tw-gradient-to: rgba(248, 250, 252, 0) !important; }
   .to-bee-navy { --tw-gradient-to: rgba(255, 250, 240, 0.86) !important; }

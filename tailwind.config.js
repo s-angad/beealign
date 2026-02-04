@@ -37,6 +37,7 @@ module.exports = {
         },
         // Slate for text
         'bee-slate': {
+          200: '#e5e7eb',
           300: '#d1d5db',
           400: '#9ca3af',
           500: '#6b7280',

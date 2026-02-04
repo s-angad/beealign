@@ -40,25 +40,25 @@ const Solutions = () => {
     {
       id: 'ai-digital',
       title: 'AI & Digital Solutions',
-      subtitle: 'Modern Digital Presence',
+      subtitle: 'Tech-Driven Innovation',
       image: '/images/solutions-ai.jpg',
-      description: 'Leverage artificial intelligence and digital tools to enhance your brand presence and automate content creation.',
+      description: 'Build custom AI-powered applications, automate business processes, and unlock new possibilities with advanced technology solutions tailored for your needs.',
       features: [
         {
-          title: 'Social Media Marketing',
-          description: 'Strategic social media campaigns designed to reach your target audience effectively.',
+          title: 'Custom AI Applications',
+          description: 'Development of intelligent web, mobile, and desktop apps using machine learning, natural language processing, and computer vision.',
         },
         {
-          title: 'Social Media Management',
-          description: 'Complete handling of your social media presence, from content planning to engagement.',
+          title: 'Process Automation',
+          description: 'Automate workflows, data entry, reporting, and repetitive tasks with AI bots and smart scripts.',
         },
         {
-          title: 'AI Video Creation',
-          description: 'AI-powered video production for marketing, training, and promotional content.',
+          title: 'Predictive Analytics',
+          description: 'Leverage data science and AI models to forecast trends, customer behavior, and business outcomes.',
         },
         {
-          title: 'Content Automation',
-          description: 'Automated content scheduling, publishing, and performance tracking systems.',
+          title: 'System Integration',
+          description: 'Connect and enhance your existing tools with AI-powered APIs, cloud services, and custom integrations.',
         },
       ],
       icon: (
@@ -216,78 +216,126 @@ const Solutions = () => {
 
       {/* Solutions Detail Sections (alternate backgrounds) */}
       {solutions.map((solution, index) => (
-        <section
-          key={solution.id}
-          id={solution.id}
-          className={`py-16 sm:py-20 lg:py-32 ${index % 2 === 0 ? 'bg-bee-navy' : 'bg-bee-darker'}`}
-        >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-20 items-start">
-              {/* Content */}
-              <div className={index % 2 === 1 ? 'lg:order-2' : ''}>
-                <div className="text-bee-yellow mb-3 sm:mb-4 [&>svg]:w-16 [&>svg]:h-16 sm:[&>svg]:w-20 sm:[&>svg]:h-20">
-                  {solution.icon}
+        solution.id === 'ai-digital' ? (
+          <section
+            key={solution.id}
+            id={solution.id}
+            className="py-20 sm:py-28 lg:py-36 bg-gradient-to-br from-yellow-50 via-white to-yellow-100"
+            style={{ boxShadow: '0 8px 32px 0 rgba(0,0,0,0.08)', borderRadius: '2rem', margin: '3vh 0' }}
+          >
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="flex flex-col lg:flex-row gap-12 items-center justify-between">
+                {/* Left: Icon, Heading, Subtitle, Description, Button */}
+                <div className="flex-1 min-w-[320px]">
+                  <div className="flex items-center gap-4 mb-4">
+                    <span className="text-bee-yellow">{solution.icon}</span>
+                    <span className="inline-block text-bee-yellow font-bold text-xl tracking-wider uppercase" style={{ letterSpacing: '0.08em' }}>{solution.subtitle}</span>
+                  </div>
+                  <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-4" style={{ color: '#23272f', lineHeight: 1.1 }}>
+                    {solution.title}
+                  </h2>
+                  <p className="text-lg sm:text-xl lg:text-2xl text-gray-700 mb-8" style={{ fontWeight: 500 }}>
+                    {solution.description}
+                  </p>
+                  <Button to="/contact" size="lg" fullWidthMobile>
+                    Let's Get Started
+                    <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </Button>
                 </div>
-                <span className="inline-block text-bee-yellow font-bold text-lg sm:text-xl tracking-wider uppercase mb-2" style={{ letterSpacing: '0.08em' }}>
-                  {solution.subtitle}
-                </span>
-                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-3 sm:mb-4" style={{ lineHeight: 1.1, color: solution.id === 'ai-digital' ? '#23272f' : '#f7fafc' }}>
-                  {solution.title}
-                </h2>
-
-                <p className="text-base sm:text-lg leading-relaxed mb-6 sm:mb-8" style={{ color: '#4a5568', fontWeight: 500 }}>
-                  {solution.description}
-                </p>
-                <Button to="/contact" fullWidthMobile>
-                  Let's Get Started
-                  <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </Button>
-              </div>
-
-              {/* Image or Features Grid */}
-              {index % 2 === 0 ? (
-                <div className="relative">
-                  {(() => {
-                    const MotionImg = require('framer-motion').motion.img;
+                {/* Right: Features Grid */}
+                <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  {solution.features.map((feature, featureIndex) => {
+                    const MotionDiv = require('framer-motion').motion.div;
                     return (
-                      <MotionImg
-                        src={solution.image}
-                        alt={solution.title}
-                        className="w-full rounded-xl sm:rounded-2xl object-cover h-64 sm:h-80 lg:h-96 border border-bee-slate-700/50"
+                      <MotionDiv
+                        key={featureIndex}
                         whileHover={{ scale: 1.05, y: -10, boxShadow: '0 8px 32px 0 rgba(0,0,0,0.18), 0 1.5px 8px 0 rgba(255,193,7,0.12)' }}
                         transition={{ type: 'spring', stiffness: 300 }}
-                        style={{ cursor: 'pointer' }}
-                      />
+                        className="bg-white rounded-2xl shadow-lg p-6 flex flex-col justify-between min-h-[140px] border border-yellow-100 cursor-pointer"
+                        style={{ borderLeft: '6px solid #c8a448' }}
+                      >
+                        <h4 className="font-bold mb-2 text-lg text-yellow-700" style={{ letterSpacing: '0.04em' }}>{feature.title}</h4>
+                        <p className="text-gray-800 text-base" style={{ fontWeight: 500 }}>{feature.description}</p>
+                      </MotionDiv>
                     );
-                  })()}
+                  })}
                 </div>
-              ) : (
-                <div className={`grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 lg:order-1`}>
+              </div>
+            </div>
+          </section>
+        ) : (
+          <section
+            key={solution.id}
+            id={solution.id}
+            className={`py-16 sm:py-20 lg:py-32 ${index % 2 === 0 ? 'bg-bee-navy' : 'bg-bee-darker'}`}
+          >
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="grid lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-20 items-start">
+                {/* Content */}
+                <div className={index % 2 === 1 ? 'lg:order-2' : ''}>
+                  <div className="text-bee-yellow mb-3 sm:mb-4 [&>svg]:w-16 [&>svg]:h-16 sm:[&>svg]:w-20 sm:[&>svg]:h-20">
+                    {solution.icon}
+                  </div>
+                  <span className="inline-block text-bee-yellow font-bold text-lg sm:text-xl tracking-wider uppercase mb-2" style={{ letterSpacing: '0.08em' }}>
+                    {solution.subtitle}
+                  </span>
+                  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-3 sm:mb-4" style={{ lineHeight: 1.1, color: solution.id === 'custom-projects' ? '#23272f' : '#f7fafc' }}>
+                    {solution.title}
+                  </h2>
+                  <p className="text-base sm:text-lg leading-relaxed mb-6 sm:mb-8" style={{ color: '#4a5568', fontWeight: 500 }}>
+                    {solution.description}
+                  </p>
+                  <Button to="/contact" fullWidthMobile>
+                    Let's Get Started
+                    <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </Button>
+                </div>
+                {/* Image or Features Grid */}
+                {index % 2 === 0 ? (
+                  <div className="relative">
+                    {(() => {
+                      const MotionImg = require('framer-motion').motion.img;
+                      return (
+                        <MotionImg
+                          src={solution.image}
+                          alt={solution.title}
+                          className="w-full rounded-xl sm:rounded-2xl object-cover h-64 sm:h-80 lg:h-96 border border-bee-slate-700/50"
+                          whileHover={{ scale: 1.05, y: -10, boxShadow: '0 8px 32px 0 rgba(0,0,0,0.18), 0 1.5px 8px 0 rgba(255,193,7,0.12)' }}
+                          transition={{ type: 'spring', stiffness: 300 }}
+                          style={{ cursor: 'pointer' }}
+                        />
+                      );
+                    })()}
+                  </div>
+                ) : (
+                  <div className={`grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 lg:order-1`}>
+                    {solution.features.map((feature, featureIndex) => (
+                      <Card key={featureIndex} padding="md">
+                        <h4 className="font-semibold mb-1 sm:mb-2 text-sm sm:text-base" style={{ color: '#c8a448' }}>{feature.title}</h4>
+                        <p className="text-xs sm:text-sm" style={{ color: '#23272f' }}>{feature.description}</p>
+                      </Card>
+                    ))}
+                  </div>
+                )}
+              </div>
+              {/* Features for odd-indexed items */}
+              {index % 2 === 1 && (
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mt-8 sm:mt-12">
                   {solution.features.map((feature, featureIndex) => (
                     <Card key={featureIndex} padding="md">
-                      <h4 className="font-semibold mb-1 sm:mb-2 text-sm sm:text-base" style={{ color: '#c8a448' }}>{feature.title}</h4>
-                      <p className="text-xs sm:text-sm" style={{ color: '#23272f' }}>{feature.description}</p>
+                      <h4 className="font-bold mb-1 sm:mb-2 text-base sm:text-lg" style={{ color: '#c8a448' }}>{feature.title}</h4>
+                      <p className="text-sm sm:text-base" style={{ color: '#23272f', fontWeight: 500 }}>{feature.description}</p>
                     </Card>
                   ))}
                 </div>
               )}
             </div>
-
-            {/* Features for odd-indexed items */}
-            {index % 2 === 1 && (
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mt-8 sm:mt-12">
-                {solution.features.map((feature, featureIndex) => (
-                  <Card key={featureIndex} padding="md">
-                    <h4 className="font-bold mb-1 sm:mb-2 text-base sm:text-lg" style={{ color: '#c8a448' }}>{feature.title}</h4>
-                    <p className="text-sm sm:text-base" style={{ color: '#23272f', fontWeight: 500 }}>{feature.description}</p>
-                  </Card>
-                ))}
-              </div>
-            )}
-          </div>
-        </section>
+          </section>
+        )
       ))}
 
       {/* CTA Section (light) */}

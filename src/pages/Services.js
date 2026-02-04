@@ -9,7 +9,7 @@ const Services = () => {
     {
       title: 'Custom Software Development',
       description: 'Tailored applications built from the ground up to solve your specific business challenges.',
-      image: '/images/services-custom.jpg',
+      image: '/images/services-custom.png',
       details: [
         'Requirements analysis and technical planning',
         'Modern architecture and scalable design',
@@ -25,7 +25,7 @@ const Services = () => {
     {
       title: 'Web Applications',
       description: 'Full-featured web applications that run smoothly across all devices and browsers.',
-      image: '/images/services-web.jpg',
+      image: '/images/services-web (2).png',
       details: [
         'Responsive, mobile-first design',
         'Intuitive user interfaces',
@@ -41,7 +41,7 @@ const Services = () => {
     {
       title: 'Business Dashboards',
       description: 'Visual dashboards that turn your data into actionable insights for better decision-making.',
-      image: '/images/services-dashboard.jpg',
+      image: '/images/services-dashboard.png',
       details: [
         'Real-time data visualization',
         'Custom metrics and KPIs',
@@ -57,7 +57,7 @@ const Services = () => {
     {
       title: 'Internal Business Tools',
       description: 'Custom tools designed to streamline your internal operations and improve team productivity.',
-      image: '/images/services-tools.jpg',
+      image: '/images/services-tools.png',
       details: [
         'Workflow automation tools',
         'Employee and resource management',
@@ -123,35 +123,64 @@ const Services = () => {
   ];
 
   return (
-    <div className="pt-14 sm:pt-16 lg:pt-20">
+    <div className="pt-0">
       <Helmet>
         <title>Services | Bixxy Bee</title>
         <meta name="description" content="Custom software development, web applications, business dashboards, and internal tools. Expert development services tailored to your business needs." />
       </Helmet>
       {/* Hero Section */}
-      <section className="relative py-16 sm:py-20 lg:py-32 bg-hero-gradient bg-grid">
+      <section className="relative pt-16 md:pt-20 lg:pt-24 pb-16 sm:pb-20 lg:pb-32 bg-hero-gradient bg-grid">
         <div className="absolute inset-0 overflow-hidden hidden sm:block">
           <div className="absolute bottom-1/4 left-1/4 w-64 sm:w-80 lg:w-96 h-64 sm:h-80 lg:h-96 bg-bee-yellow/10 rounded-full blur-3xl"></div>
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <span className="inline-block text-bee-yellow font-medium text-xs sm:text-sm tracking-wider uppercase mb-3 sm:mb-4">
-              Services
-            </span>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-bee-white leading-tight mb-4 sm:mb-6">
-              Custom Software{' '}
-              <span className="text-highlight">Built Right</span>
-            </h1>
-            <p className="text-base sm:text-lg lg:text-xl text-bee-slate-400 leading-relaxed">
-              From web applications to internal tools, we develop software that fits your business perfectlyÃ¢â‚¬â€not the other way around.
-            </p>
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+            <div className="max-w-3xl">
+              <span className="inline-block text-amber-800 font-bold text-sm sm:text-base tracking-wider uppercase mb-3 sm:mb-4">
+                Services
+              </span>
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-bee-black leading-tight mb-4 sm:mb-6">
+                Custom Software{' '}
+                <span className="text-highlight">Built Right</span>
+              </h1>
+              <p className="text-base sm:text-lg lg:text-xl text-bee-slate-600 leading-relaxed">
+                From web applications to internal tools, we develop software that fits your business perfectly—not the other way around.
+              </p>
+            </div>
+
+            <AnimationWrappers.SlideInRight>
+              <motion.div
+                whileHover={{ scale: 1.05, y: -10 }}
+                whileTap={{ scale: 0.99 }}
+                transition={{ type: 'spring', stiffness: 300, damping: 22 }}
+                className="relative group transform-gpu will-change-transform w-fit mx-auto lg:mx-0 lg:justify-self-end"
+                style={{ WebkitTapHighlightColor: 'transparent' }}
+              >
+                <div className="absolute -inset-4 rounded-[28px] bg-bee-yellow/10 blur-2xl" aria-hidden="true" />
+                <div className="relative inline-block rounded-2xl overflow-hidden bg-transparent border border-bee-slate-700/35 shadow-lg transition-all duration-300 group-hover:border-bee-yellow/50 group-hover:shadow-2xl">
+                  <motion.div
+                    animate={{ y: [0, -8, 0] }}
+                    transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+                    className="transform-gpu"
+                  >
+                    <img
+                      src="/images/services-web.png"
+                      alt="Services preview"
+                      className="block w-auto max-w-full h-auto max-h-[420px] object-contain object-center transform-gpu will-change-transform transition-transform duration-300 group-hover:scale-[1.04]"
+                      decoding="async"
+                      fetchPriority="high"
+                    />
+                  </motion.div>
+                </div>
+              </motion.div>
+            </AnimationWrappers.SlideInRight>
           </div>
         </div>
       </section>
 
       {/* Services Grid */}
-      <section className="py-16 sm:py-20 lg:py-32 bg-bee-navy">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-16 sm:py-20 lg:py-32 bg-bee-navy dark-accent-zone">
+        <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-10 2xl:px-12">
           <SectionHeading
             subtitle="What We Build"
             title="Development Services"
@@ -167,7 +196,7 @@ const Services = () => {
               visible: { opacity: 1, transition: { staggerChildren: 0.1, delayChildren: 0.1 } },
             }}
           >
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-5 xl:gap-6">
               {services.map((service, index) => (
                 <motion.div
                   key={index}
@@ -180,14 +209,18 @@ const Services = () => {
                     whileHover={{ scale: 1.02, y: -5 }}
                     transition={{ type: 'spring', stiffness: 300 }}
                   >
-                    <Card padding="lg" className="group">
+                    <Card
+                      padding="md"
+                      hover={false}
+                      className="group bg-white/95 border border-bee-slate-200/80 shadow-lg ring-1 ring-transparent transition-all duration-300 hover:border-bee-yellow/70 hover:ring-bee-yellow/40 hover:shadow-2xl"
+                    >
                       <div className="flex flex-col h-full">
                         {/* Image */}
-                        <div className="mb-4 sm:mb-6 rounded-lg overflow-hidden h-40 sm:h-48 bg-bee-slate-700">
+                        <div className="-mx-4 -mt-4 sm:-mx-6 sm:-mt-6 mb-4 sm:mb-5 overflow-hidden h-44 sm:h-52 bg-transparent ring-1 ring-transparent shadow-none transition-all duration-300 group-hover:ring-bee-yellow/60 group-hover:shadow-inner">
                           <img
                             src={service.image}
                             alt={service.title}
-                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                            className="w-full h-full object-cover scale-[1.22] group-hover:scale-[1.32] transition-transform duration-500"
                           />
                         </div>
                         
@@ -198,8 +231,8 @@ const Services = () => {
                         >
                           {service.icon}
                         </motion.div>
-                        <h3 className="text-lg sm:text-xl font-semibold text-bee-white-100 mb-2 sm:mb-3">{service.title}</h3>
-                        <p className="text-bee-slate-400 mb-4 sm:mb-6 text-sm sm:text-base">{service.description}</p>
+                        <h3 className="text-lg sm:text-xl font-semibold text-bee-black mb-2 sm:mb-3">{service.title}</h3>
+                        <p className="text-bee-slate-700 mb-4 sm:mb-6 text-sm sm:text-base leading-relaxed">{service.description}</p>
                         <ul className="space-y-2 mt-auto">
                           {service.details.map((detail, detailIndex) => (
                             <motion.li
@@ -208,7 +241,7 @@ const Services = () => {
                               whileInView={{ opacity: 1, x: 0 }}
                               transition={{ delay: detailIndex * 0.1 }}
                               viewport={{ once: true }}
-                              className="flex items-start text-xs sm:text-sm text-bee-slate-400"
+                              className="flex items-start text-xs sm:text-sm text-bee-slate-600"
                             >
                               <svg className="w-4 h-4 sm:w-5 sm:h-5 text-bee-yellow mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
@@ -243,7 +276,7 @@ const Services = () => {
                   align="left"
                   className="mb-6 sm:mb-8"
                 />
-                <p className="text-bee-slate-400 text-base sm:text-lg leading-relaxed mb-6 sm:mb-8">
+                <p className="text-bee-slate-600 text-base sm:text-lg leading-relaxed mb-6 sm:mb-8">
                   We're not a large agency or a freelance marketplace. We're a focused team of engineers who care about building software that actually works for your business.
                 </p>
                 <Button to="/how-we-work" fullWidthMobile>
@@ -266,19 +299,21 @@ const Services = () => {
                     key={index}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.15 }}
                     viewport={{ once: true }}
-                    className="p-3 sm:p-4 border border-bee-slate-700/30 rounded-lg hover:border-bee-yellow/30 transition-all"
+                    whileHover={{ y: -5, scale: 1.02 }}
+
+                    transition={{ type: 'spring', stiffness: 300 }}
+                    className="group relative z-0 hover:z-10 transform-gpu will-change-transform p-3 sm:p-4 rounded-xl bg-white/95 shadow-lg ring-1 ring-bee-slate-200/80 border border-transparent hover:border-bee-yellow/60 hover:ring-bee-yellow/40 hover:shadow-2xl"
                   >
                     <motion.div
                       animate={{ rotate: 360 }}
                       transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-                      className="w-10 h-10 sm:w-12 sm:h-12 bg-bee-yellow/10 border border-bee-yellow/20 rounded-lg flex items-center justify-center text-bee-yellow mb-3 sm:mb-4"
+                      className="w-10 h-10 sm:w-12 sm:h-12 bg-bee-yellow/10 border border-bee-yellow/20 rounded-lg flex items-center justify-center text-bee-yellow mb-3 sm:mb-4 transition-all duration-300 group-hover:bg-bee-yellow/15 group-hover:border-bee-yellow/40 group-hover:text-bee-yellow-dark group-hover:shadow-md"
                     >
                       {item.icon}
                     </motion.div>
-                    <h4 className="text-bee-white-100 font-semibold mb-1 sm:mb-2 text-sm sm:text-base">{item.title}</h4>
-                    <p className="text-bee-slate-400 text-xs sm:text-sm leading-relaxed">{item.description}</p>
+                    <h4 className="text-bee-black font-semibold mb-1 sm:mb-2 text-sm sm:text-base">{item.title}</h4>
+                    <p className="text-bee-slate-700 text-xs sm:text-sm leading-relaxed">{item.description}</p>
                   </motion.div>
                 ))}
               </div>
@@ -288,7 +323,7 @@ const Services = () => {
       </section>
 
       {/* Tech Stack Section */}
-      <section className="py-16 sm:py-20 lg:py-32 bg-bee-navy">
+      <section className="py-16 sm:py-20 lg:py-32 bg-bee-navy dark-accent-zone">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
             subtitle="Technology"
@@ -302,19 +337,19 @@ const Services = () => {
               {techStack.map((tech, index) => (
                 <AnimationWrappers.StaggerItem key={index}>
                   <motion.div
-                    whileHover={{ scale: 1.08, y: -5 }}
+                    whileHover={{ scale: 1.06, y: -5 }}
                     transition={{ type: 'spring', stiffness: 300 }}
                     className="bg-gradient-to-br from-bee-slate-800 to-bee-navy border border-bee-slate-700/50 rounded-lg p-3 sm:p-4 text-center hover:border-bee-yellow/30 active:border-bee-yellow/50 transition-colors cursor-pointer"
                   >
                     <span className="text-bee-white-100 font-medium text-sm sm:text-base">{tech.name}</span>
-                    <span className="block text-bee-slate-500 text-[10px] sm:text-xs mt-1">{tech.category}</span>
+                    <span className="block text-bee-slate-800 text-[10px] sm:text-xs mt-1">{tech.category}</span>
                   </motion.div>
                 </AnimationWrappers.StaggerItem>
               ))}
             </div>
           </AnimationWrappers.StaggerContainer>
 
-          <p className="text-center text-bee-slate-500 text-xs sm:text-sm mt-6 sm:mt-8">
+          <p className="text-center text-bee-slate-300 text-xs sm:text-sm mt-6 sm:mt-8">
             Technology choices are made based on your specific project requirements and team capabilities.
           </p>
         </div>

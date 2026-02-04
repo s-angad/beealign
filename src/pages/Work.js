@@ -43,7 +43,7 @@ const Work = () => {
       image: '/images/work-project-4.jpg',
       description: 'Cross-platform mobile solution for iOS and Android',
       details: 'Created a feature-rich mobile application deployed on both iOS and Android with offline capabilities.',
-      results: ['4.8Ã¢Ëœâ€¦ rating', '100K+ downloads', '95% retention'],
+      results: ['4.8★ rating', '100K+ downloads', '95% retention'],
       technologies: ['React Native', 'Firebase', 'Node.js'],
     },
     {
