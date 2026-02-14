@@ -1,3 +1,4 @@
+
 import React, { useEffect, useMemo, useRef } from 'react';
 import { useAnimations, useGLTF, useTexture } from '@react-three/drei';
 import * as THREE from 'three';
@@ -18,19 +19,7 @@ export function Bee3D({ onHoverChange, ...props }) {
   });
 
   // Fix texture orientation and color space
-  useEffect(() => {
-    if (!textures?.baseColor) return;
 
-    textures.baseColor.flipY = false;
-    textures.baseColor.colorSpace = THREE.SRGBColorSpace;
-
-
-    if (textures.roughness) {
-      textures.roughness.flipY = false;
-      textures.roughness.colorSpace = THREE.NoColorSpace;
- 
-    }
-  }, [textures]);
 
   // Apply textures and material settings to all meshes
   useEffect(() => {

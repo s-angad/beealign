@@ -114,6 +114,7 @@ const HeroBeeCanvas = ({ heroModelConfig, orbitPolarLimits, isMobileHero }) => {
 
   return (
     <Canvas
+      linear
       frameloop="demand"
       dpr={dpr}
       shadows={false}
@@ -121,10 +122,13 @@ const HeroBeeCanvas = ({ heroModelConfig, orbitPolarLimits, isMobileHero }) => {
         antialias: false,
         alpha: true,
         powerPreference: 'high-performance',
-        toneMapping: THREE.ACESFilmicToneMapping,
+    toneMapping: THREE.ACESFilmicToneMapping,
+        outputColorSpace: THREE.SRGBColorSpace,
         stencil: false,
         depth: true,
         preserveDrawingBuffer: false,
+        physicallyCorrectLights: true,
+
       }}
       style={{ width: '100%', height: '100%', pointerEvents: allowInteraction ? 'auto' : 'none' }}
     >
@@ -159,9 +163,18 @@ const HeroBeeCanvas = ({ heroModelConfig, orbitPolarLimits, isMobileHero }) => {
         />
       ) : null}
 
-      <ambientLight intensity={3} />
-      <directionalLight position={[6, 6, 6]} intensity={2.2} />
-      <hemisphereLight intensity={0.5} groundColor="#0b1220" />
+      <ambientLight intensity={1.4} />
+
+      <directionalLight
+        position={[4, 6, 4]}
+        intensity={1.4}
+      />
+
+      <hemisphereLight
+        intensity={0.8}
+        groundColor="#1a1a1a"
+      />
+
     </Canvas>
   );
 };
