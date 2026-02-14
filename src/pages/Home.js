@@ -427,7 +427,6 @@ const Home = () => {
                             src={solution.image}
                             alt={solution.title + ' - BeeAlign business solution'}
                             className="w-full h-full object-cover img-bounce"
-                            role="img"
                             aria-label={solution.title + ' - BeeAlign business solution'}
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent opacity-40"></div>
