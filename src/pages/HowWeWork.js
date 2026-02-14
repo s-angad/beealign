@@ -220,6 +220,17 @@ const HowWeWork = () => {
       <Helmet>
         <title>How We Work | BeeAlign</title>
         <meta name="description" content="Our proven process from discovery to deployment. Learn how BeeAlign delivers projects with clear communication, honest timelines, and ongoing support." />
+        {/* Open Graph Meta Tags */}
+        <meta property="og:title" content="How We Work | BeeAlign" />
+        <meta property="og:description" content="Our proven process from discovery to deployment. Learn how BeeAlign delivers projects with clear communication, honest timelines, and ongoing support." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://beealign.com/how-we-work" />
+        <meta property="og:image" content="https://beealign.com/images/og-image.jpg" />
+        {/* Twitter Card Meta Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="How We Work | BeeAlign" />
+        <meta name="twitter:description" content="Our proven process from discovery to deployment. Learn how BeeAlign delivers projects with clear communication, honest timelines, and ongoing support." />
+        <meta name="twitter:image" content="https://beealign.com/images/og-image.jpg" />
       </Helmet>
       {/* Hero Section */}
       <section className="relative py-16 sm:py-20 lg:py-32 bg-hero-gradient bg-grid">

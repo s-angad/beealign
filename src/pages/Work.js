@@ -87,6 +87,17 @@ const Work = () => {
       <Helmet>
         <title>Our Work | BeeAlign</title>
         <meta name="description" content="Explore BeeAlign projects and case studies. See how we help businesses automate and scale with intelligent solutions." />
+        {/* Open Graph Meta Tags */}
+        <meta property="og:title" content="Our Work | BeeAlign" />
+        <meta property="og:description" content="Explore BeeAlign projects and case studies. See how we help businesses automate and scale with intelligent solutions." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://beealign.com/work" />
+        <meta property="og:image" content="https://beealign.com/images/og-image.jpg" />
+        {/* Twitter Card Meta Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Our Work | BeeAlign" />
+        <meta name="twitter:description" content="Explore BeeAlign projects and case studies. See how we help businesses automate and scale with intelligent solutions." />
+        <meta name="twitter:image" content="https://beealign.com/images/og-image.jpg" />
       </Helmet>
 
       {/* Hero Section */}

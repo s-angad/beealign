@@ -136,6 +136,17 @@ const Contact = () => {
       <Helmet>
         <title>Contact Us | BeeAlign</title>
         <meta name="description" content="Get in touch with BeeAlign. Discuss your automation project, request a demo, or learn more about our solutions. We respond within 24 hours." />
+          {/* Open Graph Meta Tags */}
+          <meta property="og:title" content="Contact | BeeAlign" />
+          <meta property="og:description" content="Get in touch with BeeAlign. Discuss your automation project, request a demo, or learn more about our solutions. We respond within 24 hours." />
+          <meta property="og:type" content="website" />
+          <meta property="og:url" content="https://beealign.com/contact" />
+          <meta property="og:image" content="https://beealign.com/images/og-image.jpg" />
+          {/* Twitter Card Meta Tags */}
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:title" content="Contact | BeeAlign" />
+          <meta name="twitter:description" content="Get in touch with BeeAlign. Discuss your automation project, request a demo, or learn more about our solutions. We respond within 24 hours." />
+          <meta name="twitter:image" content="https://beealign.com/images/og-image.jpg" />
       </Helmet>
       {/* Hero Section */}
       <section className="relative pt-28 sm:pt-32 lg:pt-40 pb-16 sm:pb-20 lg:pb-32 bg-hero-gradient bg-grid">

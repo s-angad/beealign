@@ -334,6 +334,17 @@ const Home = () => {
       <Helmet>
         <title>BeeAlign | Intelligent Business Automation Solutions</title>
         <meta name="description" content="BeeAlign builds intelligent automation solutions for gyms, clinics, and businesses. Custom software, AI solutions, and ready-to-deploy platforms that transform operations." />
+        {/* Open Graph Meta Tags */}
+        <meta property="og:title" content="BeeAlign | Intelligent Business Automation Solutions" />
+        <meta property="og:description" content="BeeAlign builds intelligent automation solutions for gyms, clinics, and businesses. Custom software, AI solutions, and ready-to-deploy platforms that transform operations." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://beealign.com/" />
+        <meta property="og:image" content="https://beealign.com/images/og-image.jpg" />
+        {/* Twitter Card Meta Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="BeeAlign | Intelligent Business Automation Solutions" />
+        <meta name="twitter:description" content="BeeAlign builds intelligent automation solutions for gyms, clinics, and businesses. Custom software, AI solutions, and ready-to-deploy platforms that transform operations." />
+        <meta name="twitter:image" content="https://beealign.com/images/og-image.jpg" />
       </Helmet>
 
       <HeroBeeSection />
@@ -376,10 +387,12 @@ const Home = () => {
               <div className="relative img-bouncey">
                 <motion.img
                   src="/images/h1.jpg"
-                  alt="Our team working"
+                  alt="BeeAlign team collaborating on automation solutions"
                   animate={{ y: [0, -15, 0] }}
                   transition={{ duration: 4, repeat: Infinity }}
                   className="w-full rounded-xl sm:rounded-2xl shadow-2xl object-cover h-80 sm:h-96 card-glow"
+                  role="img"
+                  aria-label="BeeAlign team collaborating on automation solutions"
                 />
                 {/* Decorative element */}
                 <div className="absolute -bottom-4 -right-4 w-20 sm:w-24 h-20 sm:h-24 bg-bee-yellow/10 rounded-xl -z-10 hidden sm:block"></div>
@@ -412,8 +425,10 @@ const Home = () => {
                         <div className="relative h-48 mb-4 -mx-6 -mt-6 mb-4 overflow-hidden rounded-lg">
                           <img
                             src={solution.image}
-                            alt={solution.title}
+                            alt={solution.title + ' - BeeAlign business solution'}
                             className="w-full h-full object-cover img-bounce"
+                            role="img"
+                            aria-label={solution.title + ' - BeeAlign business solution'}
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent opacity-40"></div>
                         </div>

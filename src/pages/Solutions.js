@@ -141,6 +141,17 @@ const Solutions = () => {
       <Helmet >
         <title>Solutions | BeeAlign</title>
         <meta name="description" content="Business automation, AI solutions, and custom projects. BeeAlign delivers technology that solves real problems for gyms, clinics, and enterprises." />
+        {/* Open Graph Meta Tags */}
+        <meta property="og:title" content="Solutions | BeeAlign" />
+        <meta property="og:description" content="Business automation, AI solutions, and custom projects. BeeAlign delivers technology that solves real problems for gyms, clinics, and enterprises." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://beealign.com/solutions" />
+        <meta property="og:image" content="https://beealign.com/images/og-image.jpg" />
+        {/* Twitter Card Meta Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Solutions | BeeAlign" />
+        <meta name="twitter:description" content="Business automation, AI solutions, and custom projects. BeeAlign delivers technology that solves real problems for gyms, clinics, and enterprises." />
+        <meta name="twitter:image" content="https://beealign.com/images/og-image.jpg" />
       </Helmet>
       {/* Hero Section (light, improved contrast) */}
       <section className="relative py-10 sm:py-12 lg:py-16 bg-hero-gradient zbg-grid section-fade-bottom" style={{ marginTop: "5vh" }}>
@@ -168,11 +179,13 @@ const Solutions = () => {
                 return (
                   <MotionImg
                     src="/images/solutions-automation.jpg"
-                    alt="Solutions Hero"
+                    alt="Team collaborating on automation solutions, BeeAlign"
                     className="w-full h-full object-cover rounded-2xl shadow-xl"
                     style={{ transform: 'scaleX(1)' }}
                     whileHover={{ scale: 1.05, y: -10, boxShadow: '0 8px 32px 0 rgba(0,0,0,0.18), 0 1.5px 8px 0 rgba(255,193,7,0.12)' }}
                     transition={{ type: 'spring', stiffness: 300 }}
+                    role="img"
+                    aria-label="Team collaborating on automation solutions, BeeAlign"
                   />
                 );
               })()}
@@ -300,11 +313,13 @@ const Solutions = () => {
                       return (
                         <MotionImg
                           src={solution.image}
-                          alt={solution.title}
+                          alt={solution.title + ' - BeeAlign business solution'}
                           className="w-full rounded-xl sm:rounded-2xl object-cover h-64 sm:h-80 lg:h-96 border border-bee-slate-700/50"
                           whileHover={{ scale: 1.05, y: -10, boxShadow: '0 8px 32px 0 rgba(0,0,0,0.18), 0 1.5px 8px 0 rgba(255,193,7,0.12)' }}
                           transition={{ type: 'spring', stiffness: 300 }}
                           style={{ cursor: 'pointer' }}
+                          role="img"
+                          aria-label={solution.title + ' - BeeAlign business solution'}
                         />
                       );
                     })()}

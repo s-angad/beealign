@@ -127,6 +127,17 @@ const Services = () => {
       <Helmet>
         <title>Services | BeeAlign</title>
         <meta name="description" content="Custom software development, web applications, business dashboards, and internal tools. Expert development services tailored to your business needs." />
+        {/* Open Graph Meta Tags */}
+        <meta property="og:title" content="Services | BeeAlign" />
+        <meta property="og:description" content="Custom software development, web applications, business dashboards, and internal tools. Expert development services tailored to your business needs." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://beealign.com/services" />
+        <meta property="og:image" content="https://beealign.com/images/og-image.jpg" />
+        {/* Twitter Card Meta Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Services | BeeAlign" />
+        <meta name="twitter:description" content="Custom software development, web applications, business dashboards, and internal tools. Expert development services tailored to your business needs." />
+        <meta name="twitter:image" content="https://beealign.com/images/og-image.jpg" />
       </Helmet>
       {/* Hero Section */}
       <section className="relative pt-16 md:pt-20 lg:pt-24 pb-16 sm:pb-20 lg:pb-32 bg-hero-gradient bg-grid">

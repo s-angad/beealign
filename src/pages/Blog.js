@@ -28,6 +28,17 @@ const Blog = () => (
     <Helmet>
       <title>Blog & Resources | BeeAlign</title>
       <meta name="description" content="Insights, guides, and resources on business automation, AI, and digital solutions." />
+      {/* Open Graph Meta Tags */}
+      <meta property="og:title" content="Blog & Resources | BeeAlign" />
+      <meta property="og:description" content="Insights, guides, and resources on business automation, AI, and digital solutions." />
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content="https://beealign.com/blog" />
+      <meta property="og:image" content="https://beealign.com/images/og-image.jpg" />
+      {/* Twitter Card Meta Tags */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content="Blog & Resources | BeeAlign" />
+      <meta name="twitter:description" content="Insights, guides, and resources on business automation, AI, and digital solutions." />
+      <meta name="twitter:image" content="https://beealign.com/images/og-image.jpg" />
     </Helmet>
     <section className="py-16 sm:py-20 lg:py-32 bg-bee-darker">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

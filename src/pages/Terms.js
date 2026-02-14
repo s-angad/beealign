@@ -7,6 +7,17 @@ const Terms = () => {
       <Helmet>
         <title>Terms of Service | BeeAlign</title>
         <meta name="description" content="BeeAlign Terms of Service - Read our terms and conditions for using our services." />
+        {/* Open Graph Meta Tags */}
+        <meta property="og:title" content="Terms of Service | BeeAlign" />
+        <meta property="og:description" content="BeeAlign Terms of Service - Read our terms and conditions for using our services." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://beealign.com/terms" />
+        <meta property="og:image" content="https://beealign.com/images/og-image.jpg" />
+        {/* Twitter Card Meta Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Terms of Service | BeeAlign" />
+        <meta name="twitter:description" content="BeeAlign Terms of Service - Read our terms and conditions for using our services." />
+        <meta name="twitter:image" content="https://beealign.com/images/og-image.jpg" />
       </Helmet>
 
       <section className="bg-bee-darker pt-16 sm:pt-20 lg:pt-24 pb-16 sm:pb-20 lg:pb-24">

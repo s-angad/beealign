@@ -221,6 +221,17 @@ const PortfolioFaq = () => {
           name="description"
           content="Explore our portfolio and find answers to common questions about how we work, timelines, communication, and support."
         />
+        {/* Open Graph Meta Tags */}
+        <meta property="og:title" content="Portfolio & FAQ | BeeAlign" />
+        <meta property="og:description" content="Explore our portfolio and find answers to common questions about how we work, timelines, communication, and support." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://beealign.com/portfolio" />
+        <meta property="og:image" content="https://beealign.com/images/og-image.jpg" />
+        {/* Twitter Card Meta Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Portfolio & FAQ | BeeAlign" />
+        <meta name="twitter:description" content="Explore our portfolio and find answers to common questions about how we work, timelines, communication, and support." />
+        <meta name="twitter:image" content="https://beealign.com/images/og-image.jpg" />
       </Helmet>
 
       {/* Hero */}
